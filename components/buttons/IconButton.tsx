@@ -3,9 +3,19 @@ import React, {FC} from 'react';
 import F5 from 'react-native-vector-icons/FontAwesome5';
 import {useNavigation} from '@react-navigation/native';
 
-type Props = {buttonStyle?: Object; iconStyle?: Object; iconName: string};
+type Props = {
+  buttonStyle?: Object;
+  iconStyle?: Object;
+  iconName: string;
+  iconSize?: number;
+};
 
-const IconButton: FC<Props> = ({buttonStyle, iconName, iconStyle}) => {
+const IconButton: FC<Props> = ({
+  buttonStyle,
+  iconName,
+  iconStyle,
+  iconSize = 20,
+}) => {
   const navigation = useNavigation<any>();
   return (
     <TouchableOpacity
@@ -23,7 +33,7 @@ const IconButton: FC<Props> = ({buttonStyle, iconName, iconStyle}) => {
         },
         buttonStyle,
       ]}>
-      <F5  style={iconStyle} name={iconName} size={20} />
+      <F5 style={iconStyle} name={iconName} size={iconSize} />
     </TouchableOpacity>
   );
 };
