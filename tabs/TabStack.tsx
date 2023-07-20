@@ -18,6 +18,7 @@ import CongratulationPage from './CongratulationPage';
 import Selfie from './Selfie';
 import Transaction from './Transaction';
 import MainHome from './MainHome';
+import ChangePin from './ChangePin';
 
 const Tab = createBottomTabNavigator();
 
@@ -103,7 +104,7 @@ const TabStack = () => {
 
   return (
     <Tab.Navigator
-      initialRouteName="Congo"
+      initialRouteName="ChangePin"
       screenOptions={{
         tabBarHideOnKeyboard: true,
         tabBarShowLabel: false,
@@ -234,6 +235,15 @@ const TabStack = () => {
       <Tab.Screen
         options={{
           headerShown: false,
+          tabBarButton: () => null,
+        }}
+        name={'ChangePin'}
+        component={ChangePin}
+      />
+      <Tab.Screen
+        options={{
+          headerShown: false,
+          tabBarButton: () => null,
         }}
         name={'Selfie'}
         component={Selfie}
@@ -241,6 +251,8 @@ const TabStack = () => {
       <Tab.Screen
         options={{
           headerShown: false,
+          tabBarShowLabel: false,
+          tabBarButton: () => null,
         }}
         name={'Transactions'}
         component={Transaction}
