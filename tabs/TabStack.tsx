@@ -18,6 +18,7 @@ import CongratulationPage from './CongratulationPage';
 import Selfie from './Selfie';
 import Transaction from './Transaction';
 import MainHome from './MainHome';
+import ManageCard from '../screens/ManageCard';
 
 const Tab = createBottomTabNavigator();
 
@@ -103,7 +104,7 @@ const TabStack = () => {
 
   return (
     <Tab.Navigator
-      initialRouteName="Congo"
+      initialRouteName="Manage Card"
       screenOptions={{
         tabBarHideOnKeyboard: true,
         tabBarShowLabel: false,
@@ -244,6 +245,13 @@ const TabStack = () => {
         }}
         name={'Transactions'}
         component={Transaction}
+      />
+      <Tab.Screen
+        options={{
+          headerShown: false,
+        }}
+        name={'Manage Card'}
+        component={ManageCard}
       />
       <Tab.Screen
         options={{
