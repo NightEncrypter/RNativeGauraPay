@@ -8,18 +8,22 @@ type Props = {
   buttonText: string;
   buttonStyle?: Object;
   buttonTextColor?: Object;
+  onPress?: () => void;
 };
 
 const NormalButton: FC<Props> = ({
   buttonText = 'Next',
   buttonStyle,
   buttonTextColor,
+  onPress,
 }) => {
   const navigation = useNavigation<any>();
 
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate('Home1')}
+      onPress={() => {
+        onPress ? onPress() : navigation.navigate('Home1');
+      }}
       style={[
         styles.button,
         buttonStyle,
