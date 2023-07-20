@@ -19,6 +19,10 @@ import Selfie from './Selfie';
 import Transaction from './Transaction';
 import MainHome from './MainHome';
 import ChangePin from './ChangePin';
+import ManageCard from '../screens/ManageCard';
+import AddMoneyPage from './AddMoneyPage';
+import TransferMoney from './TransferMoney';
+import SelectBanks from './SelectBanks';
 
 const Tab = createBottomTabNavigator();
 
@@ -104,7 +108,7 @@ const TabStack = () => {
 
   return (
     <Tab.Navigator
-      initialRouteName="ChangePin"
+      initialRouteName="SelectBanks"
       screenOptions={{
         tabBarHideOnKeyboard: true,
         tabBarShowLabel: false,
@@ -245,6 +249,30 @@ const TabStack = () => {
           headerShown: false,
           tabBarButton: () => null,
         }}
+        name={'AddMoney'}
+        component={AddMoneyPage}
+      />
+      <Tab.Screen
+        options={{
+          headerShown: false,
+          tabBarButton: () => null,
+        }}
+        name={'TMoney'}
+        component={TransferMoney}
+      />
+      <Tab.Screen
+        options={{
+          headerShown: false,
+          tabBarButton: () => null,
+        }}
+        name={'SelectBanks'}
+        component={SelectBanks}
+      />
+      <Tab.Screen
+        options={{
+          headerShown: false,
+          tabBarButton: () => null,
+        }}
         name={'Selfie'}
         component={Selfie}
       />
@@ -256,6 +284,13 @@ const TabStack = () => {
         }}
         name={'Transactions'}
         component={Transaction}
+      />
+      <Tab.Screen
+        options={{
+          headerShown: false,
+        }}
+        name={'Manage Card'}
+        component={ManageCard}
       />
       <Tab.Screen
         options={{

@@ -1,15 +1,5 @@
-import {
-  StyleSheet,
-  ScrollView,
-  StatusBar,
-  Text,
-  View,
-  TextInput,
-  TouchableOpacity,
-  Image,
-} from 'react-native';
+import {StyleSheet, Text, View, Image} from 'react-native';
 import React, {useState} from 'react';
-import F5 from 'react-native-vector-icons/FontAwesome5';
 
 // import Courses from '../components/Home/Courses';
 // import Courses_btns from './Courses_btns';
@@ -19,9 +9,9 @@ import InputGroup from '../components/inputComponents/InputGroup';
 import {useNavigation} from '@react-navigation/native';
 import NormalButton from '../components/buttons/NormalButton';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import BackButton from '../components/buttons/BackButton';
+
 import Header from '../components/Header';
-const ChangePin = () => {
+const AddMoneyPage = () => {
   const navigation = useNavigation();
   const [active, setActive] = useState(false);
   const openUnitBox = () => {
@@ -51,10 +41,10 @@ const ChangePin = () => {
 
       <View style={styles.container}>
         <View style={styles.main_container}>
-          <Header title="Change pin" />
+          <Header title="Add Money" />
 
           <View style={styles.changePinImg}>
-            <Image source={require('../assets/img/changepin.png')} />
+            <Image source={require('../assets/img/addmoney.png')} />
           </View>
           <View style={styles.changePinTextContainer}>
             <Text style={styles.changePinText}>
@@ -78,7 +68,7 @@ const ChangePin = () => {
         </View>
         <View style={{paddingHorizontal: 20}}>
           <InputGroup
-            placeholderText={'Enter Pin'}
+            placeholderText={'Enter amount'}
             inputStyle={{
               backgroundColor: 'white',
               marginTop: 15,
@@ -86,7 +76,7 @@ const ChangePin = () => {
             iconName={'lock'}
           />
           <InputGroup
-            placeholderText={'Enter Card Expiry Date'}
+            placeholderText={'Confirm amount'}
             iconName={'calendar'}
             inputStyle={{
               backgroundColor: 'white',
@@ -94,14 +84,12 @@ const ChangePin = () => {
               marginBottom: 30,
             }}
           />
-          <NormalButton buttonText="Set Pin" />
+          <NormalButton buttonText="Add Amount" />
         </View>
       </View>
     </SafeAreaView>
   );
 };
-
-export default ChangePin;
 
 const styles = StyleSheet.create({
   container: {
@@ -159,3 +147,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default AddMoneyPage;

@@ -13,6 +13,11 @@ const theme = {
     bg: '#E7f6f2',
     fill: '#1C1D1F',
   },
+  container: {
+    flex: 1,
+    backgroundColor: '#CBCBCB',
+    // marginHorizontal: 20,
+  },
 };
 
 export default theme;

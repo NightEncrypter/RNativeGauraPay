@@ -18,90 +18,78 @@ import theme from '../theme/theme';
 import InputGroup from '../components/inputComponents/InputGroup';
 import {useNavigation} from '@react-navigation/native';
 import NormalButton from '../components/buttons/NormalButton';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import BackButton from '../components/buttons/BackButton';
+
 import Header from '../components/Header';
-const ChangePin = () => {
+const SelectBanks = () => {
   const navigation = useNavigation();
   const [active, setActive] = useState(false);
   const openUnitBox = () => {
     setActive(prev => !prev);
-    // if (AnimationRef.current) {
-
-    //   // AnimationRef.current?.bounce();
-    // }
-
-    // Animated.timing(fadder.animatableFadder, {
-    //   toValue: 1,
-    //   duration: 1000,
-    //   useNativeDriver: false,
-    // }).start();
   };
   return (
     <SafeAreaView
       style={[
         {
-          // justifyContent: 'center',
-          // alignItems: 'center',
           flex: 1,
         },
       ]}>
       {/* <StatusBar hidden={true} /> */}
-      {/* <ScrollView style={styles.main_container}> */}
 
       <View style={styles.container}>
         <View style={styles.main_container}>
-          <Header title="Change pin" />
+          <Header title="Select Bank" />
 
-          <View style={styles.changePinImg}>
-            <Image source={require('../assets/img/changepin.png')} />
-          </View>
-          <View style={styles.changePinTextContainer}>
-            <Text style={styles.changePinText}>
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo con
+          <View style={styles.selectSavedBanks}>
+            <Text
+              style={{
+                textTransform: 'capitalize',
+                fontSize: 20,
+                fontWeight: '600',
+                color: theme.secondary.color,
+              }}>
+              select a saved bank
+            </Text>
+            <Text
+              style={{
+                textTransform: 'capitalize',
+
+                fontSize: 20,
+                fontWeight: '600',
+                color: theme.secondary.color,
+              }}>
+              account
             </Text>
           </View>
+          <View
+            style={{
+              gap: 10,
+            }}>
+            <View style={{padding: 20, borderRadius: 25}}>
+              <Text>
+                Lorem ipsum dolor sit amet consectetur adipisicing em eligendi.
+                Quas, eaque.
+              </Text>
+            </View>
+          </View>
 
-          <>
-            {active && (
-              <InputGroup
-                placeholderText={'Name (As Per Pan)'}
-                iconName={'user'}
-                inputStyle={{
-                  marginTop: 15,
-                }}
-              />
-            )}
-          </>
           {/* </Animatable.Text> */}
         </View>
         <View style={{paddingHorizontal: 20}}>
-          <InputGroup
-            placeholderText={'Enter Pin'}
-            inputStyle={{
-              backgroundColor: 'white',
-              marginTop: 15,
-            }}
-            iconName={'lock'}
+          <NormalButton
+            buttonStyle={
+              {
+                //   border
+              }
+            }
+            buttonText="Proceed"
           />
-          <InputGroup
-            placeholderText={'Enter Card Expiry Date'}
-            iconName={'calendar'}
-            inputStyle={{
-              backgroundColor: 'white',
-              marginVertical: 15,
-              marginBottom: 30,
-            }}
-          />
-          <NormalButton buttonText="Set Pin" />
         </View>
       </View>
     </SafeAreaView>
   );
 };
 
-export default ChangePin;
+export default SelectBanks;
 
 const styles = StyleSheet.create({
   container: {
@@ -148,14 +136,20 @@ const styles = StyleSheet.create({
     marginVertical: 20,
   },
   changePinText: {
-    width: '75%',
+    width: '90%',
     textAlign: 'center',
     fontSize: 13,
+
     fontWeight: '700',
   },
 
   changePinTextContainer: {
-    flexDirection: 'row',
+    gap: 10,
+    alignItems: 'center',
     justifyContent: 'center',
+  },
+
+  selectSavedBanks: {
+    gap: 10,
   },
 });
