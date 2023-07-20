@@ -144,27 +144,6 @@ const TabStack = () => {
       <Tab.Screen
         options={{
           headerShown: false,
-          tabBarIcon: props => {
-            return (
-              // <TabButton item={undefined} {...props} />
-              <F5
-                name={'home'}
-                size={20}
-                style={{
-                  transform: [{scale: props.focused ? 1.3 : 1}],
-                  color: props.focused ? '#000' : '#1C1D1F',
-                }}
-              />
-            );
-          },
-        }}
-        name={'MainHome'}
-        component={MainHome}
-      />
-
-      <Tab.Screen
-        options={{
-          headerShown: false,
 
           tabBarIcon: props => {
             return (
@@ -182,6 +161,27 @@ const TabStack = () => {
         }}
         name={'AddMoney'}
         component={AddMoneyPage}
+      />
+
+      <Tab.Screen
+        options={{
+          headerShown: false,
+          tabBarIcon: props => {
+            return (
+              // <TabButton item={undefined} {...props} />
+              <F5
+                name={'home'}
+                size={20}
+                style={{
+                  transform: [{scale: props.focused ? 1.3 : 1}],
+                  color: props.focused ? '#000' : '#1C1D1F',
+                }}
+              />
+            );
+          },
+        }}
+        name={'MainHome'}
+        component={MainHome}
       />
 
       <Tab.Screen

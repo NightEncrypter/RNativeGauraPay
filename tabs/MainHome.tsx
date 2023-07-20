@@ -252,6 +252,7 @@ const styles = StyleSheet.create({
 
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
   },
   main_container: {
     borderBottomLeftRadius: 25,
