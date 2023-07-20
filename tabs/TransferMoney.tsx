@@ -21,10 +21,10 @@ import NormalButton from '../components/buttons/NormalButton';
 
 import Header from '../components/Header';
 const TransferMoney = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
   const [active, setActive] = useState(false);
-  const openUnitBox = () => {
-    setActive(prev => !prev);
+  const handleNext = () => {
+    navigation.navigate('SelectBanks');
   };
   return (
     <SafeAreaView
@@ -81,7 +81,7 @@ const TransferMoney = () => {
             iconName={'lock'}
           />
 
-          <NormalButton buttonText="Proceed" />
+          <NormalButton buttonText="Proceed" onPress={handleNext} />
         </View>
       </View>
     </SafeAreaView>

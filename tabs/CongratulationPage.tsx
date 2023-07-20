@@ -1,8 +1,13 @@
 import {View, Text, Image, StyleSheet} from 'react-native';
 import React from 'react';
 import NormalButton from '../components/buttons/NormalButton';
+import {useNavigation} from '@react-navigation/native';
 
 const CongratulationPage = () => {
+  const navigation = useNavigation<any>();
+  const nextPage = () => {
+    navigation.navigate('MainHome');
+  };
   return (
     <View style={styles.congoContainer}>
       <View style={styles.equalMargin}>
@@ -13,7 +18,7 @@ const CongratulationPage = () => {
         <Image source={require('../assets/img/welcome.png')} />
       </View>
       <View style={styles.congo}>
-        <NormalButton buttonText="Go to Home" />
+        <NormalButton onPress={nextPage} buttonText="Go to Home" />
       </View>
     </View>
   );

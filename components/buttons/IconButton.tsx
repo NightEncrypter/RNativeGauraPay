@@ -8,6 +8,7 @@ type Props = {
   iconStyle?: Object;
   iconName: string;
   iconSize?: number;
+  onPress?: Function;
 };
 
 const IconButton: FC<Props> = ({
@@ -15,15 +16,17 @@ const IconButton: FC<Props> = ({
   iconName,
   iconStyle,
   iconSize = 20,
+  onPress,
 }) => {
   const navigation = useNavigation<any>();
   return (
     <TouchableOpacity
-      onPress={() => navigation.goBack()}
+      onPress={() => (onPress ? onPress() : null)}
       style={[
         {
           width: 40,
           height: 40,
+
           justifyContent: 'center',
           alignItems: 'center',
           borderRadius: 25,

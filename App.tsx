@@ -28,11 +28,15 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import Login from './screens/Login';
 import Register from './screens/Register';
 import Home from './screens/Home';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import TabStack from './tabs/TabStack';
+import MainLogoScreen from './screens/MainLogoScreen';
+import PanCard from './screens/PanCard';
+import Login from './screens/Login';
+import AadhaarInfo from './screens/AadhaarInfo';
+import TakeASelfie from './screens/TakeASelfie';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -67,16 +71,13 @@ function Section({children, title}: SectionProps): JSX.Element {
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
   const Stack = createNativeStackNavigator();
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
 
   return (
     <SafeAreaProvider style={{flex: 1}}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       {/* <Provider store={store}> */}
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="HomeStack">
+        <Stack.Navigator initialRouteName="MainScreen">
           <Stack.Screen
             name="HomeStack"
             component={TabStack}
@@ -84,18 +85,37 @@ function App(): JSX.Element {
           />
 
           <Stack.Screen
+            name="PanInfo"
+            component={PanCard}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="AadhaarInfo"
+            component={AadhaarInfo}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="TakeASelfie"
+            component={TakeASelfie}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
             name="Login"
             component={Login}
             options={{headerShown: false}}
           />
-          <Stack.Screen
-            name="Reg"
+          {/* <Stack.Screen
+           name="Reg"
             component={Register}
+            options={{headerShown: false}}
+          />  */}
+          <Stack.Screen
+            name="MainScreen"
+            component={MainLogoScreen}
             options={{headerShown: false}}
           />
         </Stack.Navigator>
       </NavigationContainer>
-      {/* </Provider> */}
     </SafeAreaProvider>
   );
 }

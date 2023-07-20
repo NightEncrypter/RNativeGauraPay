@@ -5,35 +5,67 @@ import theme from '../theme/theme';
 import IconButton from './buttons/IconButton';
 
 type Props = {
+  dark?: boolean;
   title: string;
   style?: Object;
+  titleStyle?: Object;
   iconName?: string;
+  flex1?: boolean;
+  flex3?: boolean;
+  flex2?: boolean;
 };
 
-const Header: FC<Props> = ({title, style, iconName}) => {
+const Header: FC<Props> = ({
+  title,
+  style,
+  iconName,
+  titleStyle,
+  dark,
+  flex1,
+  flex2,
+  flex3,
+}) => {
   return (
-    <View style={[styles.transactionUpperContainer, style]}>
-      <View style={styles.flex}>
-        <BackButton />
+    <View style={[styles.upperContainerHead, style]}>
+      <View style={flex1 && {...styles.flex}}>
+        <BackButton
+          buttonStyle={
+            dark && {
+              borderColor: 'white',
+              backgroundColor: 'black',
+            }
+          }
+          iconStyle={dark && {color: 'white'}}
+        />
       </View>
 
-      <View>
-        <Text style={styles.transactionHead}>{title}</Text>
+      <View style={flex2 && {...styles.flex}}>
+        <Text style={[styles.textHead, titleStyle]}>{title}</Text>
       </View>
+
       {iconName ? (
         <>
-          {' '}
-          <IconButton iconName={iconName} />
+          <IconButton
+            iconName={iconName}
+            buttonStyle={
+              dark && {
+                borderColor: 'white',
+                backgroundColor: 'black',
+              }
+            }
+            iconStyle={dark && {color: 'white'}}
+          />
         </>
       ) : (
-        <View style={styles.flex} />
+        <View style={flex3 && {...styles.flex}} />
       )}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  transactionHead: {
+  textHead: {
+    textTransform: 'capitalize',
     fontSize: 24,
     fontWeight: '600',
     color: theme.primary.backgroundColor,
@@ -45,7 +77,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
   },
-  transactionUpperContainer: {
+  upperContainerHead: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',

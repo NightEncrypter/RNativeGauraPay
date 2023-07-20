@@ -1,11 +1,4 @@
-import {
-  Image,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {FC} from 'react';
 import {useNavigation, useIsFocused} from '@react-navigation/native';
 
@@ -17,7 +10,7 @@ type Props = {
   page?: string;
   imgUrl?: string;
 };
-const Login: FC<Props> = ({docText, step, page, imgUrl}) => {
+const TakeASelfie: FC<Props> = ({docText, step, page, imgUrl}) => {
   const navigation = useNavigation<any>();
 
   return (
@@ -35,10 +28,10 @@ const Login: FC<Props> = ({docText, step, page, imgUrl}) => {
             <View
               key={v}
               style={{
-                width: i == 2 ? 30 : 6,
+                width: i == 1 ? 30 : 6,
                 height: 6,
                 borderRadius: 25,
-                backgroundColor: i == 2 ? 'black' : 'grey',
+                backgroundColor: i == 1 ? 'black' : 'grey',
               }}></View>
           ))}
         </View>
@@ -47,34 +40,30 @@ const Login: FC<Props> = ({docText, step, page, imgUrl}) => {
             <View
               style={{
                 gap: 10,
-                alignItems: 'center',
               }}>
-              <Text style={styles.stepText}>Login</Text>
+              <Text style={styles.stepText}>Step 3</Text>
 
               <View style={{gap: 5}}>
+                <Text style={styles.headText}>take a selfie</Text>
                 <Text style={styles.infoDescription}>
                   {' '}
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  Pariatur totam doloribus dolores a odio numquam aliquid.
+                  Velit, rerum illo, similique provident labore aliquid porro
+                  atque distinctio ullam voluptate placeat sequi!{' '}
                 </Text>
               </View>
-              <View style={styles.userPhNumberContainer}>
-                <Text style={styles.userPhText}>Phone Number Text</Text>
-                <TextInput
-                  value="7389307348"
-                  style={{
-                    color: 'white',
-                    borderBottomColor: 'grey',
-                    borderBottomWidth: 1,
-                    width: '100%',
-                  }}
-                />
-              </View>
-              {/* <View style={styles.horizontalLine} /> */}
             </View>
             <TouchableOpacity
-              onPress={() => navigation.navigate('HomeStack')}
+              onPress={() => navigation.navigate('Selfie')}
               style={[styles.button]}>
-              <Text style={styles.buttonText}>Next</Text>
+              <Text style={styles.buttonText}>Start</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.footerContainer2}>
+            <TouchableOpacity onPress={() => navigation.navigate('HomeStack')}>
+              <Text style={styles.skipButtonText}>Skip</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -114,25 +103,7 @@ const styles = StyleSheet.create({
     padding: 10,
     paddingHorizontal: 20,
   },
-  horizontalLine: {
-    width: '100%',
-    backgroundColor: 'white',
-    opacity: 0.6,
-    height: 1,
-  },
-  userPhNumberContainer: {
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    width: '100%',
-    paddingTop: 10,
-    // gap: 10,
-  },
-  userPhText: {
-    color: 'white',
-    fontSize: 16,
-    opacity: 0.6,
-    textTransform: 'capitalize',
-  },
+
   indicatorsContainer: {
     marginTop: 10,
     paddingVertical: 10,
@@ -143,7 +114,7 @@ const styles = StyleSheet.create({
 
   stepText: {
     color: theme.primary.color,
-    textAlign: 'center',
+
     fontSize: 20,
     fontWeight: '500',
   },
@@ -155,8 +126,7 @@ const styles = StyleSheet.create({
   },
   infoDescription: {
     color: theme.primary.color,
-    maxWidth: 300,
-    textAlign: 'center',
+
     fontWeight: '300',
   },
   button: {
@@ -175,4 +145,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Login;
+export default TakeASelfie;

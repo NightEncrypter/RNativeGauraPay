@@ -1,4 +1,11 @@
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TextInput,
+  TouchableOpacity,
+} from 'react-native';
 import React, {useState} from 'react';
 
 // import Courses from '../components/Home/Courses';
@@ -11,21 +18,21 @@ import NormalButton from '../components/buttons/NormalButton';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import Header from '../components/Header';
+import CustomModal from '../components/CustomModal';
 const AddMoneyPage = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
   const [active, setActive] = useState(false);
-  const openUnitBox = () => {
-    setActive(prev => !prev);
-    // if (AnimationRef.current) {
+  const [openModal, setOpenModal] = useState(false);
 
-    //   // AnimationRef.current?.bounce();
-    // }
+  const closeModal = () => {
+    setOpenModal(false);
+  };
+  const nextPage = () => {
+    navigation.navigate('');
+  };
 
-    // Animated.timing(fadder.animatableFadder, {
-    //   toValue: 1,
-    //   duration: 1000,
-    //   useNativeDriver: false,
-    // }).start();
+  const handleAddAmount = () => {
+    setOpenModal(true);
   };
   return (
     <SafeAreaView
@@ -84,14 +91,92 @@ const AddMoneyPage = () => {
               marginBottom: 30,
             }}
           />
-          <NormalButton buttonText="Add Amount" />
+          <NormalButton buttonText="Add Amount" onPress={handleAddAmount} />
         </View>
       </View>
+
+      <CustomModal
+        whiteContainerStyle={{
+          width: '100%',
+          borderBottomLeftRadius: 0,
+          borderBottomRightRadius: 0,
+        }}
+        transparentStyle={{
+          justifyContent: 'flex-end',
+        }}
+        closeModal={closeModal}
+        openModal={openModal}
+        children={
+          <>
+            <View
+              style={{
+                alignItems: 'center',
+                gap: 20,
+              }}>
+              <Image source={require('../assets/img/Illustration.png')} />
+
+              <View style={{gap: 5}}>
+                <Text
+                  style={{
+                    maxWidth: 400,
+                    textAlign: 'center',
+                    fontWeight: '700',
+                    fontSize: 14,
+                  }}>
+                  You are paying 200.00
+                </Text>
+                <Text
+                  style={{
+                    // textTransform: 'capitalize',
+                    maxWidth: 400,
+                    textAlign: 'center',
+                    fontWeight: '700',
+                    fontSize: 14,
+                  }}>
+                  Enter your 4-digit IPIN to confirm
+                </Text>
+              </View>
+              <View
+                style={{flexDirection: 'row', alignItems: 'center', gap: 10}}>
+                {new Array(4).fill(0).map((v, i) => (
+                  <TextInput
+                    key={i}
+                    style={{
+                      paddingBottom: 2,
+                      borderBottomColor: theme.secondary.color,
+                      borderBottomWidth: 2,
+                    }}
+                  />
+                ))}
+              </View>
+              <TouchableOpacity style={styles.whiteRoundContainer}>
+                <Text
+                  style={{
+                    color: 'black',
+                    fontSize: 16,
+                    fontWeight: '500',
+                  }}>
+                  Forgot IPIN
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </>
+        }
+      />
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  whiteRoundContainer: {
+    borderColor: theme.primary.backgroundColor,
+    borderWidth: 1,
+    backgroundColor: 'white',
+    padding: 10,
+    paddingHorizontal: 20,
+    opacity: 0.8,
+    borderRadius: 25,
+  },
   container: {
     flex: 1,
     backgroundColor: '#CBCBCB',

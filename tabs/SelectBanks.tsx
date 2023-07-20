@@ -20,11 +20,12 @@ import {useNavigation} from '@react-navigation/native';
 import NormalButton from '../components/buttons/NormalButton';
 
 import Header from '../components/Header';
+import BankCard from '../components/cards/BankCard';
 const SelectBanks = () => {
-  const navigation = useNavigation();
-  const [active, setActive] = useState(false);
-  const openUnitBox = () => {
-    setActive(prev => !prev);
+  const navigation = useNavigation<any>();
+
+  const handleNext = () => {
+    navigation.navigate('MainHome');
   };
   return (
     <SafeAreaView
@@ -40,48 +41,35 @@ const SelectBanks = () => {
           <Header title="Select Bank" />
 
           <View style={styles.selectSavedBanks}>
-            <Text
-              style={{
-                textTransform: 'capitalize',
-                fontSize: 20,
-                fontWeight: '600',
-                color: theme.secondary.color,
-              }}>
-              select a saved bank
-            </Text>
-            <Text
-              style={{
-                textTransform: 'capitalize',
-
-                fontSize: 20,
-                fontWeight: '600',
-                color: theme.secondary.color,
-              }}>
-              account
-            </Text>
+            <Text style={styles.selectABankHead}>select a saved bank</Text>
+            <Text style={styles.accountHead}>account</Text>
           </View>
           <View
             style={{
               gap: 10,
+              marginTop: 20,
             }}>
-            <View style={{padding: 20, borderRadius: 25}}>
-              <Text>
-                Lorem ipsum dolor sit amet consectetur adipisicing em eligendi.
-                Quas, eaque.
-              </Text>
-            </View>
+            {[1, 2].map(v => (
+              <BankCard key={v} />
+            ))}
           </View>
 
           {/* </Animatable.Text> */}
         </View>
-        <View style={{paddingHorizontal: 20}}>
+        <View style={{padding: 10}}>
           <NormalButton
-            buttonStyle={
-              {
-                //   border
-              }
-            }
-            buttonText="Proceed"
+            onPress={handleNext}
+            buttonStyle={{
+              borderStyle: 'dashed',
+              borderColor: 'black',
+              borderWidth: 1,
+              backgroundColor: 'white',
+              //   border
+            }}
+            buttonTextColor={{
+              color: 'black',
+            }}
+            buttonText="Add New Bank"
           />
         </View>
       </View>
@@ -108,6 +96,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginLeft: 15,
   },
+
   main_container: {
     borderBottomLeftRadius: 25,
     borderBottomRightRadius: 25,
@@ -128,6 +117,51 @@ const styles = StyleSheet.create({
     letterSpacing: 1.5,
     fontWeight: '600',
     color: theme.primary.color,
+  },
+
+  //   holderName: {
+  //     flexDirection: 'row',
+  //     alignItems: 'center',
+  //     gap: 10,
+  //   },
+
+  selectABankHead: {
+    textTransform: 'capitalize',
+    fontSize: 20,
+    fontWeight: '600',
+    color: theme.secondary.color,
+  },
+  accountHead: {
+    textTransform: 'capitalize',
+
+    fontSize: 20,
+    fontWeight: '600',
+    color: theme.secondary.color,
+  },
+  holderName: {
+    color: 'black',
+    fontSize: 14,
+    fontWeight: '800',
+  },
+  accountNoText: {
+    color: 'black',
+
+    opacity: 0.7,
+    fontSize: 14,
+    fontWeight: '600',
+  },
+  bankBox: {
+    padding: 10,
+    borderRadius: 30,
+    borderColor: '#000',
+    borderWidth: 1,
+    opacity: 0.6,
+  },
+
+  innerBox: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
   },
 
   changePinImg: {

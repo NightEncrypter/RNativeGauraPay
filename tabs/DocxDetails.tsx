@@ -20,8 +20,11 @@ import NormalButton from '../components/buttons/NormalButton';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import BackButton from '../components/buttons/BackButton';
 const DocxDetails = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
   const [active, setActive] = useState(false);
+  const handleNext = () => {
+    navigation.navigate('AadhaarInfo');
+  };
   const openUnitBox = () => {
     setActive(prev => !prev);
     // if (AnimationRef.current) {
@@ -133,7 +136,7 @@ const DocxDetails = () => {
           {/* </Animatable.Text> */}
         </View>
         <View style={{marginTop: 30, paddingHorizontal: 20}}>
-          <NormalButton buttonText="Next" />
+          <NormalButton buttonText="Next" onPress={handleNext} />
         </View>
       </View>
     </SafeAreaView>

@@ -9,6 +9,7 @@ type Props = {
   buttonStyle?: Object;
   buttonTextColor?: Object;
   onPress?: () => void;
+  page?: string;
 };
 
 const NormalButton: FC<Props> = ({
@@ -16,23 +17,16 @@ const NormalButton: FC<Props> = ({
   buttonStyle,
   buttonTextColor,
   onPress,
+  page,
 }) => {
   const navigation = useNavigation<any>();
 
   return (
     <TouchableOpacity
       onPress={() => {
-        onPress ? onPress() : navigation.navigate('Home1');
+        onPress ? onPress() : navigation.navigate(page);
       }}
-      style={[
-        styles.button,
-        buttonStyle,
-        // buttonBgColor,
-        // marginTop: 15,
-
-        // elevation: 5,
-        // shadowColor: '#0090A4',
-      ]}>
+      style={[styles.button, buttonStyle]}>
       <Text style={[styles.buttonText, buttonTextColor]}>{buttonText}</Text>
     </TouchableOpacity>
   );
@@ -46,7 +40,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     textAlign: 'center',
-    fontSize: 13,
+    fontSize: 15,
     textTransform: 'capitalize',
     letterSpacing: 1.5,
     fontWeight: '600',

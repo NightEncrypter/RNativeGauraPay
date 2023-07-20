@@ -3,8 +3,16 @@ import React from 'react';
 import NormalButton from '../components/buttons/NormalButton';
 import BackButton from '../components/buttons/BackButton';
 import theme from '../theme/theme';
+import {useNavigation} from '@react-navigation/native';
 
 const Selfie = () => {
+  const navigation = useNavigation<any>();
+  const nextPage = () => {
+    navigation.navigate('Congo');
+  };
+  const handleLogin = () => {
+    navigation.navigate('Login');
+  };
   return (
     <View style={styles.selfieContainer}>
       <View
@@ -33,8 +41,9 @@ const Selfie = () => {
         <Image source={require('../assets/img/welcome.png')} />
       </View> */}
       <View style={{gap: 20}}>
-        <NormalButton buttonText="Continue" />
+        <NormalButton buttonText="Continue" onPress={nextPage} />
         <NormalButton
+          onPress={handleLogin}
           buttonText="Take a new selfie"
           buttonStyle={{
             backgroundColor: theme.secondary.backgroundColor,
