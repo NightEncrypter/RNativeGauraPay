@@ -91,6 +91,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
     justifyContent: 'flex-end',
     paddingHorizontal: 20,
+    marginBottom: 35,
     // backgroundColor: 'yellow',
   },
   skipButtonText: {
